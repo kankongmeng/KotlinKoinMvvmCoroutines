@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "IPTV",
+    "imageUrl": "https://1.bp.blogspot.com/-cAQj8PFhetE/TppskMDUgYI/AAAAAAAAD2k/l1gUI64CU4o/s200/img96.png",
+    "enabled": false
+  },
+  {
+    "id": "2",
+    "name": "Youtube",
+    "imageUrl": "http://iconbug.com/data/24/256/d3324a3d399fbde182ef6113fcfbd40c.png",
+    "enabled": false
+  },
+  {
+    "id": "3",
+    "name": "Website",
+    "imageUrl": "https://pronto-core-cdn.prontomarketing.com/2/wp-content/uploads/sites/1076/2015/06/logo.png",
+    "enabled": false
+  },
+  {
+    "id": "4",
+    "name": "Hotel Info",
+    "imageUrl": "http://www.spain-grancanaria.com/ruralparadiselastirajanas/images/stories/logohotel.png",
+    "enabled": false
+  },
+  {
+    "id": "5",
+    "name": "Settings",
+    "imageUrl": "http://www.spain-grancanaria.com/ruralparadiselastirajanas/images/stories/logohotel.png",
+    "enabled": false
+  },
+  {
+    "id": "6",
+    "name": "Apps",
+    "imageUrl": "http://www.spain-grancanaria.com/ruralparadiselastirajanas/images/stories/logohotel.png",
+    "enabled": false
+  }
+]
