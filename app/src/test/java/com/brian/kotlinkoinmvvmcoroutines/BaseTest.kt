@@ -1,8 +1,12 @@
 package com.brian.kotlinkoinmvvmcoroutines
 
 import com.brian.kotlinkoinmvvmcoroutines.api.ApiServices
+import com.brian.kotlinkoinmvvmcoroutines.model.Item
 import com.brian.kotlinkoinmvvmcoroutines.module.appModules
 import com.brian.kotlinkoinmvvmcoroutines.module.provideNetworkModule
+import com.brian.kotlinkoinmvvmcoroutines.room.ItemDao
+import io.mockk.every
+import io.mockk.mockk
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -16,11 +20,15 @@ import java.io.File
 
 abstract class BaseTest : KoinTest {
     protected val apiServices: ApiServices by inject()
+    protected val itemDao = mockk<ItemDao>()
+    protected val mockItems = listOf(Item("1", "name", "imageurl"))
     protected lateinit var mockServer: MockWebServer
 
     @Before
     open fun setUp() {
         MockitoAnnotations.initMocks(this)
+        every { itemDao.insertAll(mockItems) } returns Unit
+        every { itemDao.getAll() } returns mockItems
         mockServer = MockWebServer()
         mockServer.start()
         startKoin {

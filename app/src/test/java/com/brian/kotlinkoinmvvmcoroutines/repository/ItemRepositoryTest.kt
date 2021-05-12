@@ -12,24 +12,25 @@ class ItemRepositoryTest : BaseTest() {
     fun `getItems on success`() {
         mockHttpResponse(mockServer, "item_data.json", HttpURLConnection.HTTP_OK)
 
-        val repository = ItemRepository(apiServices)
+        val repository = ItemRepository(apiServices, itemDao)
         val resource = runBlocking { repository.getItemList() }
 
         assertTrue(resource is Resource.Success)
         val data = (resource as Resource.Success).data
         assertNotNull(data)
-        assertEquals("1", data!!.get(0).id)
+        assertEquals("1", data[0].id)
     }
 
     @Test
-    fun `getItems on failure exception`() {
+    fun `getItems on failure return room data`() {
         mockHttpResponse(mockServer, "item_data.json", HttpURLConnection.HTTP_NOT_FOUND)
 
-        val repository = ItemRepository(apiServices)
+        val repository = ItemRepository(apiServices, itemDao)
         val resource = runBlocking { repository.getItemList() }
 
-        assertTrue(resource is Resource.Error)
-        val data = (resource as Resource.Error).exception.message
+        assertTrue(resource is Resource.Success)
+        val data = (resource as Resource.Success).data
         assertNotNull(data)
+        assertEquals("1", data[0].id)
     }
 }
